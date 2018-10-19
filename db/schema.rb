@@ -16,17 +16,17 @@ ActiveRecord::Schema.define(version: 2018_10_19_202011) do
   enable_extension "plpgsql"
 
   create_table "contributions", force: :cascade do |t|
-    t.string "repository", default: "", null: false
-    t.string "pull_request_url", default: "", null: false
-    t.string "user_id", default: "", null: false
+    t.string "repository"
+    t.string "pull_request_url"
+    t.string "user_id"
     t.datetime "closed_merged_at"
     t.bigint "project_id"
     t.index ["project_id"], name: "index_contributions_on_project_id"
   end
 
   create_table "projects", force: :cascade do |t|
-    t.string "name", default: "", null: false
-    t.string "url", default: "", null: false
+    t.string "name"
+    t.string "url"
     t.datetime "project_created_at"
     t.datetime "project_last_modified"
     t.datetime "created_at", null: false

@@ -31,6 +31,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'sidekiq'
 gem 'redis-rails'
 gem 'sidekiq-cron'
+gem 'omniauth-github'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -43,6 +44,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 3.8'
   gem 'rspec_junit_formatter'
+  gem 'pry'
 end
 
 group :development do

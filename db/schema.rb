@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_30_224612) do
+ActiveRecord::Schema.define(version: 2018_12_07_174805) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,8 @@ ActiveRecord::Schema.define(version: 2018_11_30_224612) do
     t.string "oauth_token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "url"
+    t.boolean "active", default: true
   end
 
   add_foreign_key "contributions", "projects"

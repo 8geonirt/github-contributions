@@ -1,6 +1,5 @@
 *.rbc
 capybara-*.html
-.rspec
 /log
 /tmp
 /db/*.sqlite3
@@ -51,3 +50,4 @@ node_modules/
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+/config/local_env.yml

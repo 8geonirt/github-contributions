@@ -11,6 +11,7 @@ module Github
                 company
                 avatarUrl
                 id
+                login
                 url
                 email
                 name
@@ -34,6 +35,7 @@ module Github
               nodes {
                 company
                 avatarUrl
+                login
                 id
                 url
                 email

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   has_and_belongs_to_many :projects
   has_many :contributions
@@ -13,4 +15,7 @@ class User < ApplicationRecord
       user.save!
     end
   end
+
+  scope :active, -> { where(active: true) }
+  scope :inactive, -> { where(active: false) }
 end

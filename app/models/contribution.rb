@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Class that will perform CRUD operations to the Contributions table
 class Contribution < ApplicationRecord
   belongs_to :project
   belongs_to :user

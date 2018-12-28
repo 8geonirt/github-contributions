@@ -1,17 +1,13 @@
+# frozen_string_literal: true
+
 require 'graphql/client'
-require 'graphql/client/http'
 
 module GithubServices
+  # Module to execute Graphql queries
   module GraphqlService
     URL = 'https://api.github.com/graphql'
-    HttpAdapter = GraphQL::Client::HTTP.new(URL) do
-      def headers(context)
-        {
-          'Authorization' => "Bearer #{Rails.application.credentials.access[:github_access_token]}",
-          'User-Agent' => 'Ruby'
-        }
-      end
-    end
+    auth_token = Rails.application.credentials.access[:github_access_token]
+    HttpAdapter = CustomHTTP.new(URL, auth_token)
     Schema = GraphQL::Client.load_schema(HttpAdapter)
     Client = GraphQL::Client.new(schema: Schema, execute: HttpAdapter)
   end

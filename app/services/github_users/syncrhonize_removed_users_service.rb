@@ -9,7 +9,7 @@ module GithubUsers
     end
 
     def perform
-      logins = @users.map{ |user| user.login }
+      logins = @users.map(&:login)
       User.where.not(login: logins).update_all(active: false)
     end
   end

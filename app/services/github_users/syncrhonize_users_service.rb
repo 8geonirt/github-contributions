@@ -10,12 +10,7 @@ module GithubUsers
 
     def perform
       @users.each do |member|
-        user = User.find_or_initialize_by(login: member.login)
-        user.update_attributes({
-          avatar_url: member.avatar_url,
-          username: member.name,
-          email: member.email
-        })
+        GithubUsers::UserUpdaterService.new(member).perform
       end
     end
   end

@@ -2,6 +2,8 @@
 
 require 'rails_helper'
 
+# Spec that checks if an user was removed from the organization, if so then it will be mark
+# as inactive in the database
 module GithubUsers
   RSpec.describe SyncrhonizeRemovedUsersService do
     subject { SyncrhonizeRemovedUsersService.new(users) }
@@ -14,7 +16,7 @@ module GithubUsers
           User.create(login: 'deleted@a.com')
           expect do
             subject.perform
-          end.to change{User.active.count}.by(-1)
+          end.to change { User.active.count }.by(-1)
         end
       end
     end

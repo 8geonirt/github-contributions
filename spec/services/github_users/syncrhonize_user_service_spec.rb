@@ -15,7 +15,7 @@ module GithubUsers
           before do
             User.create(login: 'existing@a.com')
           end
-          it 'saves the record in the database' do
+          it 'saves the member in the database' do
             expect do
               subject.perform
             end.to change { User.count }.by(1)

@@ -1,16 +1,15 @@
 # frozen_string_literal: true
 
 module Github
-  class ProjectsService
-    attr_reader :projects, :contributions
+  class MembersContributionsService
+    attr_reader :member
 
-    def initialize(contributions)
-      @projects = []
-      @contributions = contributions
+    def initialize(member)
+      @member = member
     end
 
     def perform
-      contributions.each do |contribution|
+      ContributionService.new(member).contributions.each do |contribution|
         project = Github::ProjectUpdaterService.new(contribution.meta[:repository]).perform
         Github::ContributionUpdaterService.new(contribution, project).perform
       end

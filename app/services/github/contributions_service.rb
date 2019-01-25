@@ -1,40 +1,46 @@
 # frozen_string_literal: true
 
 module Github
-  class ContributionsService
-    attr_reader :contributions
+  class ContributionService
+    attr_reader :member
 
-    def initialize
-      @contributions = []
+    def initialize(member)
+      @member = member
     end
 
-    def perform
-      User.all.each do |member|
-        has_contributions =
-          Github::GraphqlQueries::GithubContribution.contributions?(member.login)
-        next unless has_contributions
-        first_contribution_cursor =
-          Github::GraphqlQueries::GithubContribution.first_contribution_cursor(member.login)
-        fetch_contributions(member, first_contribution_cursor) if first_contribution_cursor
-        Github::ProjectsService.new(contributions).perform
-        @contributions = []
+    def contributions
+      first_contribution_cursor = Github::GraphqlQueries::GithubContribution
+          .first_contribution_cursor(member.login)
+      return unless first_contribution_cursor
+      fetch_contributions(first_contribution_cursor)
+    end
+
+    def fetch_contributions(start_cursor, contributions = [])
+      pull_requests, page_info = github_contributions(start_cursor)
+      pull_requests.edges.each do |contribution|
+        contributions << GithubContribution.new(contribution.node)
       end
+
+      fetch_contributions(page_info.end_cursor, contributions) if page_info.has_next_page
+      contributions
     end
 
-    private
-
-    # :reek:FeatureEnvy
-    def fetch_contributions(member, start_cursor)
-      github_contributions = Github::GraphqlQueries::GithubContribution
+    def github_contributions(start_cursor)
+      contributions = Github::GraphqlQueries::GithubContribution
           .contributions(member.login, start_cursor)
+      [
+          contributions,
+          contributions.page_info
+      ]
+    end
+  end
 
-      github_contributions.edges.each do |contribution|
-        @contributions << GithubContribution.new(contribution.node)
+  class ContributionsService
+    def self.perform
+      User.active.each do |member|
+        next unless Github::GraphqlQueries::GithubContribution.contributions?(member.login)
+        Github::MembersContributionsService.new(member).perform
       end
-
-      has_next_page = github_contributions.page_info.has_next_page
-      next_cursor = github_contributions.page_info.end_cursor
-      fetch_contributions(member, next_cursor) if has_next_page
     end
   end
 end

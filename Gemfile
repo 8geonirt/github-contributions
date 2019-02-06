@@ -15,9 +15,6 @@ gem 'uglifier', '>= 1.3.0'
 
 gem 'graphql-client'
 gem 'omniauth-github'
-gem 'redis-rails'
-gem 'sidekiq'
-gem 'sidekiq-cron'
 
 gem 'bootsnap', '>= 1.1.0', require: false
 

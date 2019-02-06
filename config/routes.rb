@@ -8,6 +8,4 @@ Rails.application.routes.draw do
   get 'sessions/create'
   get 'sessions/destroy'
   root to: 'sessions#new'
-  require 'sidekiq/web'
-  mount Sidekiq::Web => '/sidekiq'
 end

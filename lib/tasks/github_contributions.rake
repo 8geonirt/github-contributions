@@ -4,7 +4,7 @@ namespace :github_contributions do
   desc 'Github members and their contributions'
   task sync: :environment do
     puts 'Fetching information...'
-    GithubMembersWorker.new.perform
+    GithubMembersWorker.perform
     puts 'Done...'
   end
 end

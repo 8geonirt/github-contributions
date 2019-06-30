@@ -11,6 +11,7 @@ module Github
           author: contribution.author.login,
           title: contribution.title,
           url: contribution.url,
+          updated_at: contribution.updated_at,
           merged_at: contribution.merged_at,
           merged_by: contribution.merged_by,
           repository: GithubRepository.new(contribution.repository)

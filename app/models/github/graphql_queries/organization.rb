@@ -8,7 +8,7 @@ module Github
       query($organization: String!, $afterCursor: String!) {
           organization(login: $organization) {
             login
-            members(first: 10, after: $afterCursor) {
+            membersWithRole(first: 10, after: $afterCursor) {
               nodes {
                 company
                 avatarUrl
@@ -33,7 +33,7 @@ module Github
       query($organization: String!) {
           organization(login: $organization) {
             login
-            members(first: 1) {
+            membersWithRole(first: 1) {
               nodes {
                 company
                 avatarUrl
@@ -55,7 +55,7 @@ module Github
         variables = { organization: organization }
         response = GithubServices::GraphqlService::QueryExecutor
             .new(FirstMemberQuery, variables).perform
-        response.organization.members.page_info.start_cursor
+        response.organization.members_with_role.page_info.start_cursor
       end
 
       def self.members(organization, cursor)
@@ -65,7 +65,7 @@ module Github
         }
         response = GithubServices::GraphqlService::QueryExecutor
             .new(MembersQuery, variables).perform
-        response.organization.members
+        response.organization.members_with_role
       end
     end
   end

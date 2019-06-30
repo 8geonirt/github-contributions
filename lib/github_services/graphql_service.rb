@@ -2,10 +2,10 @@
 
 require 'graphql/client'
 
-# Custom class for query execution errors
-class QueryExecutionError < StandardError; end
-
 module GithubServices
+  # Custom class for query execution errors
+  class QueryExecutionError < StandardError; end
+
   # Module to execute Graphql queries
   module GraphqlService
     URL = 'https://api.github.com/graphql'

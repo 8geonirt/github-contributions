@@ -13,9 +13,10 @@ module Github
       repository = Project.find_or_create_by(
         name: project.name_with_owner,
         url: project.url,
-        project_created_at: project.created_at,
-        project_last_modified: project.updated_at
-      )
+        project_created_at: project.created_at
+      ) do |current_repository|
+        current_repository.project_last_modified = project.updated_at
+      end
       repository
     end
   end

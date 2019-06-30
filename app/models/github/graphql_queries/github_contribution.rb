@@ -31,6 +31,7 @@ module Github
                 }
                 title
                 url
+                updatedAt
                 mergedAt
                 mergedBy {
                   login

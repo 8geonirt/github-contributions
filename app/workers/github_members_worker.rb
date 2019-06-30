@@ -2,8 +2,8 @@
 
 # Fetch the members of an organization
 class GithubMembersWorker
-  def perform
+  def self.perform
     Github::MembersService.new('magma-labs').perform
-    ContributionsWorker.new.perform
+    ContributionsWorker.perform
   end
 end

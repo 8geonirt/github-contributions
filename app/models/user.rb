@@ -8,13 +8,11 @@ class User < ApplicationRecord
 
   def self.from_omniauth(auth)
     auth_info = auth.info
-    where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |user|
+    where(login: auth_info.nickname).first_or_initialize.tap do |user|
       user.email = auth_info.email
       user.uid = auth.uid
       user.provider = auth.provider
       user.avatar_url = auth_info.image
-      user.username = auth_info.name
-      user.oauth_token = auth.credentials.token
       user.save!
     end
   end

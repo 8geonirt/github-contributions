@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>GithubContributions</title>
+    <title>Github Contributions</title>
+    <meta name="viewport" content= "width=device-width, initial-scale=1.0">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,8 +11,22 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <section class="main-container">
+      <% if signed_in? %>
+        <aside class="side-container current-user-section">
+          <img src="<%= current_user.avatar_url =%>"
+               class="github-user-image"
+               alt="Github Profile Picture">
+               <%= link_to "@#{current_user.login}", "https://github.com/#{current_user.login}", class: "github-user-link" =%>
+               <%= link_to "Logout", sessions_destroy_path, class: "github-user-link" =%>
+        </aside>
+      <% end %>
+      <section class="main-container-wrapper">
+        <%= yield %>
+      </section>
+    </section>
+    <footer class="main-footer">
+      Github Contributions
+    </footer>
   </body>
 </html>

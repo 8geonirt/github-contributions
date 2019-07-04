@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   def create
     user = User.from_omniauth(request.env['omniauth.auth'])
 
-    if !User.active.find_by(login: user.username)
+    if !User.active.find_by(login: user.login)
       return redirect_to login_path
     end
     return unless user.valid?

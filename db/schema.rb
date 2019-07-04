@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_09_225356) do
+ActiveRecord::Schema.define(version: 2019_07_04_145456) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 2019_05_09_225356) do
     t.string "url"
     t.boolean "active", default: true
     t.string "login"
+    t.integer "contributions_count", default: 0
   end
 
   add_foreign_key "contributions", "projects"

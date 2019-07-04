@@ -1,0 +1,42 @@
+.members-container {
+  display: flex;
+  flex-flow: row wrap;
+
+  .member-card {
+    align-items: center;
+    box-shadow: 0 5px 20px 0 rgba(69,79,91,0.2);
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 calc(50% - 40px);
+    justify-content: center;
+    margin: 20px;
+    transition: box-shadow 300ms ease;
+
+    @media only screen and (min-width: 1024px) {
+      flex: 0 0 calc(25% - 40px);
+    }
+
+    &:hover {
+      box-shadow: 0 11px 54px 0 rgba(69,79,91,0.3);
+    }
+
+    .member-picture {
+      border-radius: 50%;
+      margin-top: 20px;
+      max-width: 100px;
+    }
+
+    .member-name {
+      color: #000;
+      display: block;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-top: 10px;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

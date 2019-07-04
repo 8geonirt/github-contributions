@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
 class HomeController < ApplicationController
-  def index; end
+  before_action :authenticate!
+
+  def index;
+    @users = User.active.order('contributions_count desc')
+  end
 end

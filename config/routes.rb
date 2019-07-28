@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'auth/failure', to: redirect('/')
   delete 'signout', to: 'sessions#destroy', as: 'signout'
   get 'sessions/new', as: 'login'
+  get 'contributions/:user_id', to: 'contributions#index', as: 'contributions'
   get 'sessions/create'
   get 'sessions/destroy'
   root to: 'home#index'

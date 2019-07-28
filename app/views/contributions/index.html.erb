@@ -32,9 +32,8 @@
 </section>
 
 <script type="text/javascript">
-  window.addEventListener('DOMContentLoaded', function() {
+  var init = function() {
     var prsButtons = Array.from(document.getElementsByClassName('pull-request-description-button'))
-
     prsButtons.forEach(function(button) {
       button.addEventListener('click', function(event) {
         var descriptionContainer = event.currentTarget.nextElementSibling;
@@ -43,5 +42,6 @@
         event.currentTarget.classList.toggle('expanded');
       });
     });
-  });
+  };
+  document.addEventListener('turbolinks:load', init(), { once: true });
 </script>

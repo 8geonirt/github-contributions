@@ -4,9 +4,11 @@
 module Github
   class ProjectUpdaterService
     attr_reader :project
+    attr_reader :user
 
-    def initialize(project)
+    def initialize(project, user)
       @project = project
+      @user = user
     end
 
     def perform
@@ -16,6 +18,8 @@ module Github
         project_created_at: project.created_at
       ) do |current_repository|
         current_repository.project_last_modified = project.updated_at
+        current_repository.users << user if !current_repository.users.where(id: user.id).any?
+        current_repository.save!
       end
       repository
     end

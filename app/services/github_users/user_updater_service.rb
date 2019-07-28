@@ -13,7 +13,8 @@ module GithubUsers
       user.update_attributes(
         avatar_url: @member[:avatar_url],
         username: @member[:name],
-        email: @member[:email]
+        email: @member[:email],
+        active: true
       )
     end
   end

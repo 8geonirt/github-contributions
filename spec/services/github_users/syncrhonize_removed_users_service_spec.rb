@@ -12,8 +12,8 @@ module GithubUsers
     context '#perform' do
       describe 'when users are removed from the org' do
         it 'also deactivates them from this system' do
-          User.create(login: 'a@a.com')
-          User.create(login: 'deleted@a.com')
+          User.create(login: 'a@a.com', active: true)
+          User.create(login: 'deleted@a.com', active: true)
           expect do
             subject.perform
           end.to change { User.active.count }.by(-1)

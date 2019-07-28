@@ -5,7 +5,8 @@ require 'rails_helper'
 # TODO: Add description
 module Github
   RSpec.describe ProjectUpdaterService do
-    subject { ProjectUpdaterService.new(projects.first) }
+    let(:user) { User.find_or_create_by(login: 'softr8') }
+    subject { ProjectUpdaterService.new(projects.first, user) }
     include_context 'github_projects'
 
     context '#perform' do

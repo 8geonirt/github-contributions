@@ -9,7 +9,8 @@ shared_context 'github_members' do
               login: 'a@a.com',
               avatar_url: 'something.com',
               name: 'a_member',
-              email: 'a@a.com'
+              email: 'a@a.com',
+              active: true
           }
         ),
         double(
@@ -18,7 +19,8 @@ shared_context 'github_members' do
               login: 'existing@a.com',
               avatar_url: 'existing_avatar.com',
               name: 'existing_member',
-              email: 'existing@a.com'
+              email: 'existing@a.com',
+              active: true
           }
         )
     ]

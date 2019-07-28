@@ -10,7 +10,7 @@ module Github
 
     def perform
       ContributionService.new(member).contributions.each do |contribution|
-        project = Github::ProjectUpdaterService.new(contribution.meta[:repository]).perform
+        project = Github::ProjectUpdaterService.new(contribution.meta[:repository], member).perform
         Github::ContributionUpdaterService.new(contribution, project).perform
       end
     end

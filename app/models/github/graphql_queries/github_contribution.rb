@@ -30,6 +30,7 @@ module Github
                   updatedAt
                 }
                 title
+                bodyHTML
                 url
                 updatedAt
                 mergedAt

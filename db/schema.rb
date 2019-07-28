@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_05_153453) do
+ActiveRecord::Schema.define(version: 2019_07_28_004802) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 2019_07_05_153453) do
     t.datetime "closed_merged_at"
     t.bigint "project_id"
     t.datetime "contribution_updated_at"
+    t.string "title"
+    t.text "body_html"
     t.index ["project_id"], name: "index_contributions_on_project_id"
   end
 

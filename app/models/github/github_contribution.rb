@@ -10,6 +10,7 @@ module Github
       @meta = {
           author: contribution.author.login,
           title: contribution.title,
+          body_html: contribution.body_html,
           url: contribution.url,
           updated_at: contribution.updated_at,
           merged_at: contribution.merged_at,

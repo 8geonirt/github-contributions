@@ -16,7 +16,9 @@ module Github
         repository: contribution[:repository].url,
         closed_merged_at: contribution[:merged_at],
         user: User.find_by(login: contribution[:author]),
-        project: project
+        project: project,
+        title: contribution[:title],
+        body_html: contribution[:body_html]
       )
     end
   end

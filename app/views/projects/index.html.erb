@@ -1,0 +1,16 @@
+<section class="contributions-section">
+  <h1>
+    <a href="/">Github Contributions</a>
+  </h1>
+  <section class="members-container">
+    <% @projects.each do |project| %>
+      <%= link_to contributions_path(project.id), class: 'member-card' do %>
+        <article>
+          <img src="https://avatars0.githubusercontent.com/u/15347577?v=4" class="member-picture"/>
+          <h1 class="member-name"><%= project.name=%></h1>
+          <h1 class="member-name"><%= project.total_contributions =%></h1>
+        </article>
+      <% end %>
+    <% end %>
+  </section>
+</section>

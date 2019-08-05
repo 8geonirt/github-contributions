@@ -1,14 +1,15 @@
 class ContributionsController < ApplicationController
   before_action :authenticate!
-  before_action :set_user, only: [:index]
+  before_action :user, only: [:index]
 
   def index
-    @projects = @user.projects.map {|p| {project: p, contributions: p.contributions.where(user_id: @user.id)}}
+    @project = user.projects.find_by(id: params[:project_id])
+    @contributions = @project.contributions.where(user_id: user.id).order('closed_merged_at desc')
   end
 
   private
 
-  def set_user
-    @user = User.find(params[:user_id])
+  def user
+    User.find(session[:current_user_id])
   end
 end

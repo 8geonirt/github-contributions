@@ -5,7 +5,7 @@
       <article class="member-card">
         <img src="<%= user.avatar_url =%>" class="member-picture"/>
         <%= link_to "@#{user.login}", "https://github.com/#{user.login}", class: "member-name", target: "_blank" =%>
-        <%= link_to user.contributions_count, contributions_path(user.id), class: "member-name" =%>
+        <%= link_to user.contributions_count, projects_path(user.id), class: "member-name" =%>
       </article>
     <% end %>
   </section>

@@ -16,11 +16,10 @@ module Github
         name: project.name_with_owner,
         url: project.url,
         project_created_at: project.created_at
-      ) do |current_repository|
-        current_repository.project_last_modified = project.updated_at
-        current_repository.users << user if !current_repository.users.where(id: user.id).any?
-        current_repository.save!
-      end
+      )
+      repository.project_last_modified = project.updated_at
+      repository.users << user if !repository.users.where(id: user.id).any?
+      repository.save!
       repository
     end
   end

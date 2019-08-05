@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_28_004802) do
+ActiveRecord::Schema.define(version: 2019_08_05_164210) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2019_07_28_004802) do
   create_table "contributions", force: :cascade do |t|
     t.string "repository"
     t.string "pull_request_url"
-    t.string "user_id"
+    t.integer "user_id"
     t.datetime "closed_merged_at"
     t.bigint "project_id"
     t.datetime "contribution_updated_at"

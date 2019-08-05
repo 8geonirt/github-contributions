@@ -1,27 +1,3 @@
-.members-container {
-  display: flex;
-  flex-flow: row wrap;
-
-  .member-picture {
-    border-radius: 50%;
-    margin-top: 20px;
-    max-width: 100px;
-  }
-
-  .member-name {
-    color: #000;
-    display: block;
-    font-size: 1rem;
-    font-weight: 700;
-    margin-top: 10px;
-    text-decoration: none;
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-}
-
 .member-card {
   align-items: center;
   box-shadow: 0 5px 20px 0 rgba(69,79,91,0.2);
@@ -39,5 +15,31 @@
 
   &:hover {
     box-shadow: 0 11px 54px 0 rgba(69,79,91,0.3);
+  }
+}
+
+.members-container {
+  display: flex;
+  flex-flow: row wrap;
+
+  .member-picture {
+    border-radius: 50%;
+    margin-top: 20px;
+    max-width: 100px;
+  }
+
+  .member-name {
+    color: #000;
+    display: block;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-top: 10px;
+    padding: 0 30px;
+    text-decoration: none;
+    word-break: break-word;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }

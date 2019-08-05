@@ -2,32 +2,24 @@
   <h1>
     <a href="/">Github Contributions</a>
   </h1>
-  <h2>
-    <%= @user.login =%> has contributed <%= @user.contributions.count =%> times in <%= @projects.count =%> projects
-  </h2>
   <section class="contributions-container">
-    <% @projects.each do |project| %>
-      <article class="contribution-container">
-        <h1 class="project-title">
-          - <%= project[:project].name =%>
-        </h1>
-        <% project[:contributions].each do |contribution| %>
-          <article class="contribution-item">
-            <h1 class="contribution-header">
-              <%= contribution.title =%>
-              | merged at <%= contribution.closed_merged_at.strftime('%b %e, %Y') =%>
-            <a href="<%= contribution.pull_request_url =%>" target="_blank">View on Github</a>
-            </h1>
-            <% if !contribution.body_html.empty? %>
-              <button type="button" class="pull-request-description-button">Pull Request description</button>
-              <div class="pull-request-description">
-                <%= contribution.body_html.html_safe =%>
-              </div>
-            <% end %>
-          </article>
-        <% end %>
-      </article>
-    <% end %>
+    <article class="contribution-container">
+      <% @contributions.each do |contribution| %>
+        <article class="contribution-item">
+          <h1 class="contribution-header">
+            <%= contribution.title =%>
+            | merged at <%= contribution.closed_merged_at.strftime('%b %e, %Y') =%>
+          <a href="<%= contribution.pull_request_url =%>" target="_blank">View on Github</a>
+          </h1>
+          <% if !contribution.body_html.empty? %>
+            <button type="button" class="pull-request-description-button">Pull Request description</button>
+            <div class="pull-request-description">
+              <%= contribution.body_html.html_safe =%>
+            </div>
+          <% end %>
+        </article>
+      <% end %>
+    </article>
   </section>
 </section>
 

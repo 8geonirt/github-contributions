@@ -19,14 +19,12 @@
                alt="Github Profile Picture">
                <%= link_to "@#{current_user.login}", "https://github.com/#{current_user.login}", class: "github-user-link" =%>
                <%= link_to "Logout", sessions_destroy_path, class: "github-user-link" =%>
+               <%= breadcrumbs %>
         </aside>
       <% end %>
       <section class="main-container-wrapper">
         <%= yield %>
       </section>
     </section>
-    <footer class="main-footer">
-      Github Contributions
-    </footer>
   </body>
 </html>

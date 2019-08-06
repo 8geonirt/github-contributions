@@ -1,7 +1,9 @@
 <section class="contributions-section">
   <h1>
-    <a href="/">Github Contributions</a>
+    <a href="/">Projects</a>
   </h1>
+  <h2><%= @user.login =%> has contributed to <%= @user.projects.count =%> projects</h2>
+  <h3>with <%= @user.contributions.count =%> contributions</h3>
   <section class="members-container">
     <% @projects.each do |project| %>
       <%= link_to contributions_path(project.id), class: 'member-card' do %>

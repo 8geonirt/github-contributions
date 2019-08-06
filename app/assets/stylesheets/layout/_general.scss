@@ -4,4 +4,17 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+
+  .breadcrumbs {
+    color: $white;
+    list-style: none;
+    padding: 0;
+    text-align: center;
+
+    li a {
+      color: $white;
+      display: block;
+      padding: 10px 0;
+    }
+  }
 }

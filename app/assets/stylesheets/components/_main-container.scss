@@ -10,29 +10,31 @@
 
   .side-container {
     align-items: center;
+    background-color: $primary-background-color;
     border-bottom: 1px solid $border-color;
     display: flex;
     flex-direction: column;
     min-height: 100px;
-    padding-top: 10px;
+    padding: 20px 0;
+    width: 100%;
 
     @media only screen and (min-width: 640px) {
       border-bottom: none;
       border-right: 1px solid $border-color;
       flex: 0 0 20%;
+      height: 100vh;
       min-height: 200px;
       padding-top: 75px;
+      position: fixed;
+      width: 350px;
     }
   }
 
   .main-container-wrapper {
-    height: calc(100vh - 200px);
-    overflow: auto;
-
     @media only screen and (min-width: 640px) {
-      height: calc(100vh - 200px);
+      height: 100vh;
       flex: 1 0;
-      padding: 40px 80px;
+      padding: 40px 80px 40px 400px;
     }
   }
 }

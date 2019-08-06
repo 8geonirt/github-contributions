@@ -21,7 +21,6 @@
   .contribution-header {
     border: 1px solid #c0d3eb;
     font-size: 16px;
-    max-width: 600px;
     padding: 15px 15px;
 
     a {
@@ -36,11 +35,14 @@
     border: 1px solid #d1d5da;
     display: none;
     margin-top: 10px;
-    max-width: 600px;
     padding: 5px 15px;
 
     &.expanded {
       display: block;
+    }
+
+    img {
+      max-width: 500px !important;
     }
 
     &-button {
